@@ -7,7 +7,7 @@ app = Flask(__name__)
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "mythical-patrol-219308-0de924333ef2.json"
 
 
-@app.route('/stream_processing_dashboard')
+@app.route('/stream_processing_dashboard', methods=['GET'])
 def stream_processing():  # put application's code here
     table_id = os.environ['STREAM_TABLE_ID']
     stream_schema = [
@@ -26,7 +26,7 @@ def stream_processing():  # put application's code here
     return render_template('Stream.html')
 
 
-@app.route('/batch_processing_dashboard')
+@app.route('/batch_processing_dashboard', methods=['GET'])
 def batch_processing():  # put application's code here
     table_id = os.environ['BATCH_TABLE_ID']
     batch_schema = [
@@ -45,7 +45,7 @@ def batch_processing():  # put application's code here
                 )
     return render_template('Batch.html')
 
-
-if __name__ == '__main__':
-    app.run()
-# app.run(host='0.0.0.0', port=5000)
+#
+# if __name__ == '__main__':
+#     app.run()
+app.run(host='0.0.0.0', port=5000)
