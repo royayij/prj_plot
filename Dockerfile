@@ -9,8 +9,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy all files in training-db local host directory to /usr/src/myapp in Docker container
 COPY . .
 # Enviroment Variables
-ENV BATCH_TABLE_ID=mythical-patrol-219308.assignment_dataset.result_school
-ENV STREAM_TABLE_ID=mythical-patrol-219308.assignment_dataset.Result_donor
 # Expose the port that our app runs in
 EXPOSE 5000
 # Run our App
