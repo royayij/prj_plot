@@ -9,7 +9,7 @@ os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "mythical-patrol-219308-0de924333
 
 @app.route('/stream_processing_dashboard', methods=['GET'])
 def stream_processing():  # put application's code here
-    table_id = 'mythical-patrol-219308.assignment_dataset.Result_donor'
+    table_id = os.environ['STREAM_TABLE_ID']
     stream_schema = [
         bigquery.SchemaField("city", "STRING"),
         bigquery.SchemaField("state", "STRING"),
@@ -28,7 +28,7 @@ def stream_processing():  # put application's code here
 
 @app.route('/batch_processing_dashboard', methods=['GET'])
 def batch_processing():  # put application's code here
-    table_id = 'mythical-patrol-219308.assignment_dataset.result_school'
+    table_id = os.environ['BATCH_TABLE_ID']
     batch_schema = [
         bigquery.SchemaField("School_City", "STRING"),
         bigquery.SchemaField("School_Name", "STRING"),
@@ -44,6 +44,7 @@ def batch_processing():  # put application's code here
                 title="5 top cities with the highest donation amount"
                 )
     return render_template('Batch.html')
+
 
 #
 # if __name__ == '__main__':
